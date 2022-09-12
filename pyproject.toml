@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "opencv-saliency-examples"
+version = "0.1.0"
+description = "Use OpenCV Saliency module to get saliency of images from the Pascal VOC dataset"
+authors = ["Nicholas M. Synovic <nicholas.synovic@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+opencv-contrib-python = "^4.6.0"
+torch = "^1.12.1"
+torchvision = "^0.13.1"
+torchaudio = "^0.12.1"
+pandas = "^1.4.4"
+
+[tool.poetry.dev-dependencies]
+black = "^22.8.0"
+isort = "^5.10.1"
+pynvim = "^0.4.3"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
