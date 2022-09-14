@@ -7,18 +7,30 @@ from pathlib import PurePath
 
 
 spectralSaliency = cv2.saliency.StaticSaliencySpectralResidual_create()
+fineGrainSaliency = cv2.saliency.StaticSaliencyFineGrained_create()
 
 def readDirectory(dir: str) ->  list:
     files: list = listdir(dir)
     filepaths: list = [join(dir, f) for f in files]
     return filepaths
 
-def computeSpectralSaliency(imagePath: str) ->  ndarray:
+def computeSpectralSaliency(imagePath: str, outputFolder: str = "data") ->  None:
+    imageName: str = PurePath(imagePath).with_suffix('').name + "_spectralResidual.jpg"
+    outputPath: str = join(outputFolder, imageName)
     image: ndarray = cv2.imread(imagePath)
     (success, saliencyMap) = spectralSaliency.computeSaliency(image)
     saliencyMap: ndarray = (saliencyMap * 255).astype("uint8")
-    return saliencyMap
-#     cv2.imwrite("test.png", saliencyMap)
+    cv2.imwrite(outputPath, saliencyMap)
+
+
+def computeFineGrainSaliency(imagePath: str, outputFolder: str = "data") -> None: 
+    imageName: str = PurePath(imagePath).with_suffix('').name + "_fineGrain.jpg"
+    outputPath: str = join(outputFolder, imageName)
+    image: ndarray = cv2.imread(imagePath)
+    (success, saliencyMap) = fineGrainSaliency.computeSaliency(image)
+    saliencyMap: ndarray = (saliencyMap * 255).astype("uint8")
+    cv2.imwrite(outputPath, saliencyMap)
+
 
 def writeImage(image: ndarray, imagePath: str)  ->  None:
     cv2.imwrite(imagePath, image)
@@ -28,10 +40,8 @@ def main()  ->  None:
     with Bar("Creating saliency maps of PascalVOC images...", max=len(imagePaths)) as bar:
         imagePath: str
         for imagePath in imagePaths:
-            outputName: str = PurePath(imagePath).name
-            outputPath: str = join("data", outputName)
-            saliencyMap: ndarray = computeSpectralSaliency(imagePath)
-            writeImage(saliencyMap, outputPath)
+            computeSpectralSaliency(imagePath)
+            computeFineGrainSaliency(imagePath)
             bar.next()
 
 
