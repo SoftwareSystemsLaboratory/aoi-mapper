@@ -11,6 +11,7 @@ torch = "^1.12.1"
 torchvision = "^0.13.1"
 torchaudio = "^0.12.1"
 pandas = "^1.4.4"
+progress = "^1.6"
 
 [tool.poetry.dev-dependencies]
 black = "^22.8.0"
