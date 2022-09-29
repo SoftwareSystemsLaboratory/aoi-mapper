@@ -1,2 +1,8 @@
-# opencv-saliency-examples
-Use OpenCV Saliency module to get saliency of images from the Pascal VOC dataset
+# Saliency Mapper
+
+> Tools to generate the saliency maps of images
+
+## Table of Contents
+
+- [Saliency Mapper](#saliency-mapper)
+  - [Table of Contents](#table-of-contents)

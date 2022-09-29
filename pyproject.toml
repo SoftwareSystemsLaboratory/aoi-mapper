@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "opencv-saliency-examples"
+name = "saliency-mapper"
 version = "0.1.0"
-description = "Use OpenCV Saliency module to get saliency of images from the Pascal VOC dataset"
+description = "Tools to generate the saliency maps of images"
 authors = ["Nicholas M. Synovic <nicholas.synovic@gmail.com>"]
 
 [tool.poetry.dependencies]
