@@ -19,4 +19,4 @@ Supported methods include:
 - saliency mapping
 - segmentation
 
-All of these notebooks can be run in Google Collab.
+All of these notebooks can be run in Google Colab.
